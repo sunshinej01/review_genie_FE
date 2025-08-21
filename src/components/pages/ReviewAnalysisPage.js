@@ -1,39 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Card from '@/components/common/Card';
-import Button from '@/components/common/Button';
+import { useStore } from '@/components/providers/StoreProvider';
+import useStoreStore from '@/store/storeStore';
 
 const AnalysisPage = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState('1주일');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const { selectedStore } = useStore();
+  const { getCurrentStoreData } = useStoreStore();
+  
+  // 실제 날짜로 설정 (2025년 8월 11일 ~ 8월 17일)
+  const startDate = '2025-08-11';
+  const endDate = '2025-08-17';
+  
+  // 현재 선택된 가게의 데이터
+  const currentStoreData = getCurrentStoreData();
+  const { analysisData, keywords } = currentStoreData;
 
-  // 기간 옵션
-  const periodOptions = ['1주일', '1개월', '3개월', '직접입력'];
 
-  // 임시 데이터 - 수평 막대 그래프용 (긍정/부정 리뷰 비교)
-  const analysisData = [
-    { name: '맛', positive: 85, negative: 15 },
-    { name: '서비스', positive: 78, negative: 22 },
-    { name: '가격', positive: 65, negative: 35 },
-    { name: '위생', positive: 92, negative: 8 },
-    { name: '분위기', positive: 88, negative: 12 },
-    { name: '위치', positive: 72, negative: 28 },
-  ];
-
-  // 주요 keyword 순위 데이터
-  const keywords = [
-    { rank: 1, keyword: '타르트', count: 156 },
-    { rank: 2, keyword: '생과일', count: 134 },
-    { rank: 3, keyword: '크림', count: 98 },
-    { rank: 4, keyword: '달콤한', count: 87 },
-    { rank: 5, keyword: '신선한', count: 76 },
-    { rank: 6, keyword: '부드러운', count: 65 },
-    { rank: 7, keyword: '향기로운', count: 54 },
-    { rank: 8, keyword: '예쁜', count: 43 },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -41,51 +26,13 @@ const AnalysisPage = () => {
         {/* 페이지 제목 */}
         <div className="mb-8">
           <div className="bg-green-600 text-white px-4 py-2 rounded-full inline-block mb-4">
-            <span className="text-sm font-medium">1주일 동안의 리뷰 내용 분석 결과입니다.</span>
+            <span className="text-sm font-medium">2025년 8월 11일 ~ 8월 17일 리뷰 내용 분석 결과입니다.</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900">리뷰 분석</h1>
           <p className="text-gray-600 mt-2">고객들의 리뷰를 분석하여 인사이트를 도출합니다</p>
         </div>
 
-        {/* 기간 설정 필터 */}
-        <Card className="mb-8">
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="text-sm font-medium text-gray-700">기간:</span>
-            
-            {/* 기간 선택 버튼들 */}
-            <div className="flex space-x-2">
-              {periodOptions.map((period) => (
-                <Button
-                  key={period}
-                  variant={selectedPeriod === period ? 'primary' : 'secondary'}
-                  onClick={() => setSelectedPeriod(period)}
-                  className="text-sm"
-                >
-                  {period}
-                </Button>
-              ))}
-            </div>
 
-            {/* 직접입력 날짜 선택 */}
-            {selectedPeriod === '직접입력' && (
-              <div className="flex items-center space-x-2">
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                />
-                <span className="text-gray-500">~</span>
-                <input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
-                />
-              </div>
-            )}
-          </div>
-        </Card>
 
         {/* 두 컬럼 레이아웃 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -146,17 +93,13 @@ const AnalysisPage = () => {
         </div>
 
         {/* 추가 분석 정보 */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">78%</div>
+              <div className="text-2xl font-bold text-green-600">
+                {Math.round(analysisData.reduce((sum, item) => sum + item.positive, 0) / analysisData.length)}%
+              </div>
               <div className="text-gray-600">긍정 리뷰 비율</div>
-            </div>
-          </Card>
-          <Card>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">4.6</div>
-              <div className="text-gray-600">평균 평점</div>
             </div>
           </Card>
           <Card>
