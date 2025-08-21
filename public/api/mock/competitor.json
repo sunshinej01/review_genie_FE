@@ -1,0 +1,73 @@
+{
+  "marketShare": {
+    "ourCompany": 35,
+    "competitorA": 28,
+    "competitorB": 22,
+    "others": 15
+  },
+  "satisfaction": {
+    "ourCompany": 71.4,
+    "competitorA": 68.2,
+    "competitorB": 65.8
+  },
+  "priceCompetitiveness": {
+    "ourCompany": 8.5,
+    "competitorA": 7.2,
+    "competitorB": 6.8
+  },
+  "competitors": [
+    {
+      "name": "경쟁사 A",
+      "strengths": [
+        "브랜드 인지도가 높음",
+        "글로벌 진출 성공",
+        "R&D 투자 규모가 큼"
+      ],
+      "weaknesses": [
+        "고가 정책으로 인한 고객 이탈",
+        "서비스 응답 속도 느림",
+        "제품 다양성 부족"
+      ],
+      "products": ["프리미엄 제품", "기업용 솔루션", "클라우드 서비스"]
+    },
+    {
+      "name": "경쟁사 B",
+      "strengths": [
+        "가격 경쟁력 우수",
+        "신기술 도입 빠름",
+        "스타트업과의 협력 활발"
+      ],
+      "weaknesses": [
+        "브랜드 신뢰도 부족",
+        "사후 관리 체계 미흡",
+        "글로벌 시장 진출 한계"
+      ],
+      "products": ["경제형 제품", "모바일 앱", "AI 솔루션"]
+    }
+  ],
+  "swot": {
+    "strengths": [
+      "우수한 제품 품질",
+      "체계적인 고객 서비스",
+      "안정적인 재무 상태",
+      "혁신적인 기술 개발"
+    ],
+    "weaknesses": [
+      "마케팅 예산 부족",
+      "해외 시장 진출 한계",
+      "인재 확보 어려움"
+    ],
+    "opportunities": [
+      "AI 기술 도입 확대",
+      "해외 시장 진출 기회",
+      "신규 사업 영역 확장",
+      "디지털 전환 가속화"
+    ],
+    "threats": [
+      "경쟁사들의 기술 추격",
+      "원자재 가격 상승",
+      "규제 환경 변화",
+      "경기 침체 위험"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "totalReviews": 1250,
+  "positiveReviews": 892,
+  "negativeReviews": 358,
+  "satisfaction": 71.4,
+  "trustScore": 78.2,
+  "keywords": [
+    { "word": "품질", "count": 156 },
+    { "word": "서비스", "count": 134 },
+    { "word": "가격", "count": 98 },
+    { "word": "배송", "count": 87 },
+    { "word": "친절", "count": 76 }
+  ],
+  "positiveFeedback": [
+    "제품 품질이 매우 우수합니다",
+    "고객 서비스가 친절하고 빠릅니다",
+    "가격 대비 만족도가 높습니다",
+    "배송이 빠르고 안전합니다",
+    "사후 관리가 체계적입니다"
+  ],
+  "improvementAreas": [
+    "배송 시간 개선이 필요합니다",
+    "고객 문의 응답 속도 향상",
+    "제품 다양성 확대",
+    "모바일 앱 사용성 개선",
+    "할인 혜택 확대"
+  ],
+  "sentimentTrend": [
+    { "date": "2024-01", "positive": 65, "negative": 35 },
+    { "date": "2024-02", "positive": 68, "negative": 32 },
+    { "date": "2024-03", "positive": 71, "negative": 29 },
+    { "date": "2024-04", "positive": 73, "negative": 27 },
+    { "date": "2024-05", "positive": 71, "negative": 29 }
+  ]
+}
