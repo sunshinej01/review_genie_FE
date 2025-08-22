@@ -178,9 +178,6 @@ const MyPage = () => {
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">{totalReviewCount.toLocaleString()}</div>
               <div className="text-gray-600">총 리뷰 수</div>
-              <div className="text-xs text-gray-500 mt-2">
-                리뷰분석 페이지와 동일한 sample data
-              </div>
             </div>
           </Card>
           
